@@ -5,6 +5,7 @@
       :max=10000
       name="test-input-max"
       label="Test input mux"
+      suffix="€"
     />
   </div>
 </template>
