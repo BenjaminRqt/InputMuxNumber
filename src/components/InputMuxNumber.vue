@@ -1,15 +1,17 @@
 <template>
     <div class="input-nux-number">
-        <label :for="name" v-if="label"> {{ label }}</label>
+        <label class="input-nux-number_label" :for="name" v-if="label"> {{ label }}</label>
         <input
+                class="input-nux-number_input"
                 type="text"
                 :title="name"
                 :name="name"
                 :id="name"
                 :value="value"
         >
-        <span class="icons">
+        <span class="input-nux-number_icons">
             <button
+                    class="input-nux-number_min-button"
                     @mousedown="down"
                     @touchstart="down"
                     @mouseleave="stop"
@@ -18,6 +20,7 @@
                     @touchcancel="stop"
             >-</button>
             <button
+                    class="input-nux-number_max-button"
                     @mousedown="up"
                     @touchstart="up"
                     @mouseleave="stop"
@@ -26,7 +29,7 @@
                     @touchcancel="stop"
             >+</button>
         </span>
-        <span class="help" v-if="hasHelp">{{ textHelp }}</span>
+        <span class="input-nux-number_help" v-if="hasHelp">{{ textHelp }}</span>
     </div>
 </template>
 <script lang="ts">
