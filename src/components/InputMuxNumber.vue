@@ -115,9 +115,9 @@
             getMultiplier() {
                 if (this.counter < 10) {
                     return 1;
-                } else if (this.counter >= 10 && this.counter < 50) {
+                } else if (this.counter >= 10 && this.counter < 30) {
                     return 10;
-                } else if (this.counter >= 50 && this.counter < 100) {
+                } else if (this.counter >= 30 && this.counter < 50)  {
                     return 100
                 } else {
                     return 1000;

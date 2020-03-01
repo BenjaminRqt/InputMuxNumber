@@ -2,7 +2,7 @@
   <div id="app">
     <InputMuxNumber
       :min=5
-      :max=5000
+      :max=10000
       name="test-input-max"
       label="Test input mux"
     />
