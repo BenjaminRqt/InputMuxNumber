@@ -47,11 +47,16 @@
     label: {
       type: String,
     },
+    speed: {
+        type: Number,
+        default: 60
+    }
   },
   data() {
     return {
         value: 0,
         interval:false,
+        counter: 0
     }
   },
     created() {
@@ -63,30 +68,54 @@
       down() {
           if(!this.interval){
               this.interval = setInterval(() => {
-                  if(this.respectMin()) {
-                      --this.value;
+                  if(!this.respectMin(this.value - this.getMultiplier())) {
+                      this.value = this.min;
+                  } else if(this.respectMin()) {
+                      this.value -= this.getMultiplier();
+                      ++this.counter;
                   }
-              }, 30);
+              }, this.speed);
           }
       },
       up(){
           if(!this.interval){
               this.interval = setInterval(() => {
-                  if(this.respectMax()) {
-                      ++this.value;
+                  if(!this.respectMax(this.value + this.getMultiplier())) {
+                    this.value = this.max;
+                  } else if(this.respectMax()) {
+                      this.value += this.getMultiplier();
+                      ++this.counter;
                   }
-              }, 30);
+              }, this.speed);
           }
       },
       stop(){
           clearInterval(this.interval);
-          this.interval = false
+          this.interval = false;
+          this.counter = 0;
       },
-      respectMin() {
+      respectMin(value = null) {
+          if(value) {
+              return this.min < value;
+          }
           return this.min < this.value;
       },
-      respectMax() {
+      respectMax(value = null) {
+          if(value) {
+              return this.max > value;
+          }
           return this.max > this.value;
+      },
+      getMultiplier() {
+          if(this.counter < 10) {
+              return 1;
+          } else if (this.counter >= 10 && this.counter < 50) {
+              return 10;
+          } else if (this.counter >= 50  && this.counter < 100) {
+              return 100
+          } else {
+              return 1000;
+          }
       }
   }
 };
