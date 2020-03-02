@@ -7,7 +7,7 @@
                 :title="name"
                 :name="name"
                 :id="name"
-                :value="value"
+                :value="valueSuffixed"
         >
         <span class="input-nux-number_icons">
             <button
@@ -58,6 +58,9 @@
             help: {
                 type: Boolean,
                 default: true
+            },
+            suffix: {
+              type: String
             }
         },
         data() {
@@ -139,7 +142,10 @@
                     this.hasHelp = false;
                     return '';
                 }
-            }
+            },
+          valueSuffixed() {
+              return this.value + this.suffix
+          }
         }
     };
 </script>
