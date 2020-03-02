@@ -1,11 +1,12 @@
 <template>
   <div id="app">
     <InputMuxNumber
-      :min=5
+      :min=0
       :max=10000
       name="test-input-max"
       label="Test input mux"
       suffix="€"
+      step="25"
     />
   </div>
 </template>
